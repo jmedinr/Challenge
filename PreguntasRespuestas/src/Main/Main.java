@@ -5,11 +5,20 @@
  */
 package Main;
 
+import controller.*;
+import model.*;
+import view.*;
+
 /**
  *
  * @author juanm
  */
 public class Main {
     public static void main(String[] args) {
+        ViewPreguntas vista = new ViewPreguntas();
+        PreguntasModel modelo = new PreguntasModel ();
+        
+        Preguntas controlador = new Preguntas(modelo,vista);
+        controlador.start();
     }
 }
