@@ -15,10 +15,9 @@ import view.*;
  */
 public class Main {
     public static void main(String[] args) {
-        ViewPreguntas vista = new ViewPreguntas();
-        PreguntasModel modelo = new PreguntasModel ();
-        
-        Preguntas controlador = new Preguntas(modelo,vista);
-        controlador.start();
+        ViewQuestion view = new ViewQuestion();
+        PlayerModel model = new PlayerModel();
+        Players play = new Players(model,view);
+        play.start();
     }
 }

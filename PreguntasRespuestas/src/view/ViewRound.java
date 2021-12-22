@@ -9,12 +9,12 @@ package view;
  *
  * @author juanm
  */
-public class ViewRonda extends javax.swing.JFrame {
+public class ViewRound extends javax.swing.JFrame {
 
     /**
      * Creates new form ViewRonda1
      */
-    public ViewRonda() {
+    public ViewRound() {
         initComponents();
     }
 
@@ -28,22 +28,19 @@ public class ViewRonda extends javax.swing.JFrame {
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTextPane1 = new javax.swing.JTextPane();
+        QuestionPane = new javax.swing.JTextPane();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTextPane2 = new javax.swing.JTextPane();
+        AnswerPane1 = new javax.swing.JTextPane();
         jScrollPane3 = new javax.swing.JScrollPane();
-        jTextPane3 = new javax.swing.JTextPane();
+        AnswerPane2 = new javax.swing.JTextPane();
         jScrollPane4 = new javax.swing.JScrollPane();
-        jTextPane4 = new javax.swing.JTextPane();
+        AnswerPane3 = new javax.swing.JTextPane();
         jScrollPane5 = new javax.swing.JScrollPane();
-        jTextPane5 = new javax.swing.JTextPane();
+        AnswerPane4 = new javax.swing.JTextPane();
         jLabel8 = new javax.swing.JLabel();
         jRadioButton1 = new javax.swing.JRadioButton();
         jRadioButton2 = new javax.swing.JRadioButton();
@@ -51,17 +48,18 @@ public class ViewRonda extends javax.swing.JFrame {
         jRadioButton4 = new javax.swing.JRadioButton();
         jLabel10 = new javax.swing.JLabel();
         jScrollPane6 = new javax.swing.JScrollPane();
-        jTextPane6 = new javax.swing.JTextPane();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        PointsPane = new javax.swing.JTextPane();
+        ContinueButton = new javax.swing.JButton();
+        FinishButton = new javax.swing.JButton();
         jScrollPane7 = new javax.swing.JScrollPane();
-        jTextPane7 = new javax.swing.JTextPane();
+        RoundPane = new javax.swing.JTextPane();
         jScrollPane9 = new javax.swing.JScrollPane();
-        jTextPane9 = new javax.swing.JTextPane();
+        PrizePane = new javax.swing.JTextPane();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jScrollPane1.setViewportView(jTextPane1);
+        QuestionPane.setEditable(false);
+        jScrollPane1.setViewportView(QuestionPane);
 
         jLabel1.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         jLabel1.setText("Ronda");
@@ -72,40 +70,47 @@ public class ViewRonda extends javax.swing.JFrame {
         jLabel3.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         jLabel3.setText("Elige Una Respuesta");
 
-        jLabel4.setText("A)");
+        AnswerPane1.setEditable(false);
+        jScrollPane2.setViewportView(AnswerPane1);
 
-        jLabel5.setText("B)");
+        AnswerPane2.setEditable(false);
+        jScrollPane3.setViewportView(AnswerPane2);
 
-        jLabel6.setText("C)");
+        AnswerPane3.setEditable(false);
+        jScrollPane4.setViewportView(AnswerPane3);
 
-        jLabel7.setText("D)");
-
-        jScrollPane2.setViewportView(jTextPane2);
-
-        jScrollPane3.setViewportView(jTextPane3);
-
-        jScrollPane4.setViewportView(jTextPane4);
-
-        jScrollPane5.setViewportView(jTextPane5);
+        AnswerPane4.setEditable(false);
+        jScrollPane5.setViewportView(AnswerPane4);
 
         jLabel8.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
         jLabel8.setText("Premio en Puntos:");
 
+        jRadioButton1.setText(" A)");
+
+        jRadioButton2.setText("B)");
+
+        jRadioButton3.setText("C)");
+
+        jRadioButton4.setText("D)");
+
         jLabel10.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
         jLabel10.setText("Puntos Acumulados:");
 
-        jScrollPane6.setViewportView(jTextPane6);
+        PointsPane.setEditable(false);
+        jScrollPane6.setViewportView(PointsPane);
 
-        jButton1.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
-        jButton1.setText("Continuar");
+        ContinueButton.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
+        ContinueButton.setText("Continuar");
 
-        jButton2.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
-        jButton2.setForeground(new java.awt.Color(255, 0, 51));
-        jButton2.setText("Retirarse");
+        FinishButton.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
+        FinishButton.setForeground(new java.awt.Color(255, 0, 51));
+        FinishButton.setText("Retirarse");
 
-        jScrollPane7.setViewportView(jTextPane7);
+        RoundPane.setEditable(false);
+        jScrollPane7.setViewportView(RoundPane);
 
-        jScrollPane9.setViewportView(jTextPane9);
+        PrizePane.setEditable(false);
+        jScrollPane9.setViewportView(PrizePane);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -118,38 +123,35 @@ public class ViewRonda extends javax.swing.JFrame {
                 .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(210, 210, 210))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(layout.createSequentialGroup()
-                                .addContainerGap()
-                                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 314, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addContainerGap()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel6)
-                                    .addComponent(jLabel5)
-                                    .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 11, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(18, 18, 18)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jScrollPane3)
-                                    .addComponent(jScrollPane4)
-                                    .addComponent(jScrollPane5))))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addContainerGap()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jRadioButton1)
-                            .addComponent(jRadioButton2)
+                            .addComponent(jRadioButton4)
                             .addComponent(jRadioButton3)
-                            .addComponent(jRadioButton4)))
+                            .addComponent(jRadioButton2)
+                            .addComponent(jRadioButton1))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(15, 15, 15)
+                                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jScrollPane5, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                        .addGap(0, 0, Short.MAX_VALUE)
+                                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 330, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(jScrollPane3)
+                                    .addComponent(jScrollPane4)))))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 367, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(164, 164, 164)
                         .addComponent(jLabel2)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 43, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 53, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel10)
                     .addComponent(jLabel8))
@@ -163,8 +165,8 @@ public class ViewRonda extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(154, 154, 154)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                            .addComponent(ContinueButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(FinishButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(137, 137, 137)
                         .addComponent(jLabel3)))
@@ -192,30 +194,29 @@ public class ViewRonda extends javax.swing.JFrame {
                         .addGap(16, 16, 16)
                         .addComponent(jLabel3)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel4)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel4)
+                                .addGap(1, 1, 1)
+                                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(jRadioButton1))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 9, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel5)
-                            .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jRadioButton2))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jRadioButton2, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jScrollPane3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(5, 5, 5)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel6)
                             .addComponent(jRadioButton3))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel7)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jRadioButton4)))
                     .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton1)
+                .addComponent(ContinueButton)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton2)
+                .addComponent(FinishButton)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -227,16 +228,21 @@ public class ViewRonda extends javax.swing.JFrame {
      */
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    public javax.swing.JButton jButton1;
-    public javax.swing.JButton jButton2;
+    public javax.swing.JTextPane AnswerPane1;
+    public javax.swing.JTextPane AnswerPane2;
+    public javax.swing.JTextPane AnswerPane3;
+    public javax.swing.JTextPane AnswerPane4;
+    public javax.swing.JButton ContinueButton;
+    public javax.swing.JButton FinishButton;
+    public javax.swing.JTextPane PointsPane;
+    public javax.swing.JTextPane PrizePane;
+    public javax.swing.JTextPane QuestionPane;
+    public javax.swing.JTextPane RoundPane;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     public javax.swing.JRadioButton jRadioButton1;
     public javax.swing.JRadioButton jRadioButton2;
@@ -250,13 +256,5 @@ public class ViewRonda extends javax.swing.JFrame {
     public javax.swing.JScrollPane jScrollPane6;
     private javax.swing.JScrollPane jScrollPane7;
     private javax.swing.JScrollPane jScrollPane9;
-    public javax.swing.JTextPane jTextPane1;
-    public javax.swing.JTextPane jTextPane2;
-    public javax.swing.JTextPane jTextPane3;
-    public javax.swing.JTextPane jTextPane4;
-    public javax.swing.JTextPane jTextPane5;
-    public javax.swing.JTextPane jTextPane6;
-    public javax.swing.JTextPane jTextPane7;
-    public javax.swing.JTextPane jTextPane9;
     // End of variables declaration//GEN-END:variables
 }

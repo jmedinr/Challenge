@@ -9,12 +9,12 @@ package view;
  *
  * @author juanm
  */
-public class ViewFelicitaciones extends javax.swing.JFrame {
+public class ViewCongratulations extends javax.swing.JFrame {
 
     /**
      * Creates new form Felicitaciones
      */
-    public ViewFelicitaciones() {
+    public ViewCongratulations() {
         initComponents();
     }
 
