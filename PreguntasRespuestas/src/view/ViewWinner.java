@@ -9,12 +9,12 @@ package view;
  *
  * @author juanm
  */
-public class ViewGanador extends javax.swing.JFrame {
+public class ViewWinner extends javax.swing.JFrame {
 
     /**
      * Creates new form ViewGanador
      */
-    public ViewGanador() {
+    public ViewWinner() {
         initComponents();
     }
 

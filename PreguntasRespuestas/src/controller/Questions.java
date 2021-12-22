@@ -15,12 +15,12 @@ import view.*;
  *
  * @author juanm
  */
-public class Preguntas implements ActionListener {
+public class Questions implements ActionListener {
 
-    private PreguntasModel modelo;
-    private ViewPreguntas vista;
+    private QuestionModel modelo;
+    private ViewQuestion vista;
 
-    public Preguntas(PreguntasModel modelo, ViewPreguntas vista) {
+    public Questions(QuestionModel modelo, ViewQuestion vista) {
         this.modelo = modelo;
         this.vista = vista;
     }
