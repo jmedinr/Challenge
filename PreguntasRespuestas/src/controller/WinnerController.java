@@ -1,7 +1,5 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+* Controller when you are the winner.
  */
 package controller;
 
@@ -20,7 +18,7 @@ import view.*;
 
 /**
  *
- * @author juanm
+ * @author jmedinr
  */
 public class WinnerController implements ActionListener {
     

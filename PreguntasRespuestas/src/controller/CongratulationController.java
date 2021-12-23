@@ -1,7 +1,6 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+/*
+ * This is the Controller by when it was answered correctly
  */
 package controller;
 
@@ -19,7 +18,7 @@ import view.*;
 
 /**
  *
- * @author juanm
+ * @author jmedinr
  */
 public class CongratulationController implements ActionListener {
     
@@ -29,7 +28,8 @@ public class CongratulationController implements ActionListener {
     
     public static ArrayList<PlayerE> player = new ArrayList<PlayerE>();
     public static ArrayList<PlayerE> playerSelect = new ArrayList<PlayerE>();
-
+    
+    //Constructor
     public CongratulationController(ViewCongratulations view, PlayerModel model, int categoryVal) {
         this.view = view;
         this.model = model;
@@ -37,6 +37,7 @@ public class CongratulationController implements ActionListener {
         this.view.nextButton.addActionListener(this);
     }
     
+    //// Start View
     public void start() throws SQLException, ClassNotFoundException {
         this.view.setVisible(true);
         this.view.getContentPane().setBackground(Color.WHITE);
@@ -45,17 +46,20 @@ public class CongratulationController implements ActionListener {
         setInformation(playerSelect);
     }
     
+    ////Method for obtain Players of BD
     public ArrayList<PlayerE> getPlayer() throws SQLException, ClassNotFoundException{
         player = PlayerModel.getUser();
         return player;
     }
     
+    // Method for setting View Items
     public void setInformation(ArrayList<PlayerE> data){
         int sizePlayer = data.size();
         PlayerE playerC = data.get(sizePlayer-1);
         view.PointPane.setText(String.valueOf(playerC.getPoint()));
     }
-
+    
+    //Action for Buttons
     @Override
     public void actionPerformed(ActionEvent e) {
         switch (e.getActionCommand()) {

@@ -7,7 +7,7 @@ package view;
 
 /**
  *
- * @author juanm
+ * @author jmedinr
  */
 public class ViewError extends javax.swing.JFrame {
 

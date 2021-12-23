@@ -7,7 +7,7 @@ package view;
 
 /**
  *
- * @author juanm
+ * @author jmedinr
  */
 public class ViewWinner extends javax.swing.JFrame {
 

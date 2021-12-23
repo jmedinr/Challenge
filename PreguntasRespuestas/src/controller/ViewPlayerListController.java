@@ -1,7 +1,5 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+* Controller the list of players.
  */
 package controller;
 
@@ -22,7 +20,7 @@ import view.*;
 
 /**
  *
- * @author juanm
+ * @author jmedinr
  */
 public class ViewPlayerListController implements ActionListener {
     
@@ -32,6 +30,7 @@ public class ViewPlayerListController implements ActionListener {
     public static ArrayList<PlayerE> players = new ArrayList<PlayerE>();
     public static ArrayList<PlayerE> playerList = new ArrayList<PlayerE>();
 
+    // Contructor
     public ViewPlayerListController(ViewPlayerList view, PlayerModel model) {
         this.view = view;
         this.model = model;
@@ -39,6 +38,7 @@ public class ViewPlayerListController implements ActionListener {
         this.view.SalirButton2.addActionListener(this);
     }
     
+    // Start View
     public void start() throws SQLException, ClassNotFoundException {
         this.view.setVisible(true);
         this.view.getContentPane().setBackground(Color.WHITE);
@@ -52,6 +52,7 @@ public class ViewPlayerListController implements ActionListener {
         return players;
     }
     
+    //Method for obtain Players of BD
     public void setTable(ArrayList<PlayerE> data){
         DefaultTableModel modelo = new DefaultTableModel(null, new String[]{"Jugador", "Puntos"});
         ArrayList<PlayerE> playersArray = data;
@@ -63,7 +64,8 @@ public class ViewPlayerListController implements ActionListener {
         }
         view.PlayerTable.setModel(modelo);
     }
-
+    
+    //Action for Buttons
     @Override
     public void actionPerformed(ActionEvent e) {
         switch (e.getActionCommand()) {

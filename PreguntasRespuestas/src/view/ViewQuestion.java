@@ -7,7 +7,7 @@ package view;
 
 /**
  *
- * @author juanm
+ * @author jmedinr
  */
 public class ViewQuestion extends javax.swing.JFrame {
 

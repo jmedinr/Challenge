@@ -1,7 +1,5 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+* This is the controller for when is wrong
  */
 package controller;
 
@@ -17,7 +15,7 @@ import view.*;
 
 /**
  *
- * @author juanm
+ * @author jmedinr
  */
 public class ErrorController implements ActionListener{
     
@@ -27,14 +25,16 @@ public class ErrorController implements ActionListener{
     
     public static ArrayList<PlayerE> player = new ArrayList<PlayerE>();
     public static ArrayList<PlayerE> playerSelect = new ArrayList<PlayerE>();
-
+    
+    // Contructor
     public ErrorController(ViewError view, PlayerModel model, int categoryVal) {
         this.view = view;
         this.model = model;
         this.categoryVal = categoryVal;
         this.view.ExitButton.addActionListener(this);
     }
-  
+    
+    // Start View
     public void start() throws SQLException, ClassNotFoundException {
         this.view.setVisible(true);
         this.view.getContentPane().setBackground(Color.WHITE);
@@ -43,17 +43,20 @@ public class ErrorController implements ActionListener{
         setInformation(playerSelect);
     }
     
+    // Method for obtain Playeers of BD
     public ArrayList<PlayerE> getPlayer() throws SQLException, ClassNotFoundException{
         player = PlayerModel.getUser();
         return player;
     }
     
+    // Method for setting View Items
     public void setInformation(ArrayList<PlayerE> data){
         int sizePlayer = data.size();
         PlayerE playerC = data.get(sizePlayer-1);
         view.PointPane.setText(String.valueOf(playerC.getPoint()));
     }
-
+    
+    //Action for Buttons
     @Override
     public void actionPerformed(ActionEvent e) {
         switch (e.getActionCommand()) {

@@ -1,7 +1,5 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * This is the Controller for the inicial View.
  */
 package controller;
 
@@ -17,14 +15,14 @@ import view.*;
 
 /**
  *
- * @author juanm
+ * @author jmedinr
  */
 public class Players implements ActionListener {
     
     PlayerModel model;
     ViewQuestion view;
     
-
+    // Contructor
     public Players(PlayerModel model, ViewQuestion view) {
         this.model = model;
         this.view = view;
@@ -33,16 +31,14 @@ public class Players implements ActionListener {
         this.view.salirButton1.addActionListener(this);
     }
     
+    // Start View
     public void start() {
         this.view.setVisible(true);
         this.view.getContentPane().setBackground(Color.WHITE);
         this.view.setLocationRelativeTo(null);
     }
-
-    /**
-     *
-     * @param e
-     */
+    
+    //Action for Buttons
     @Override
     public void actionPerformed(ActionEvent e) {
         switch (e.getActionCommand()) {
@@ -52,6 +48,7 @@ public class Players implements ActionListener {
                 int category = 1;
                 {
                     try {
+                        //Register Player in BD
                         PlayerModel.registerPlayer(name,points,category);
                     } catch (SQLException ex) {
                         Logger.getLogger(Players.class.getName()).log(Level.SEVERE, null, ex);

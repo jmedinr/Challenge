@@ -1,7 +1,5 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Is the principal controller of program, here run the questions and are displayed in the view
  */
 package controller;
 
@@ -18,7 +16,7 @@ import view.*;
 
 /**
  *
- * @author juanm
+ * @author jmedinr
  */
 public class RoundController implements ActionListener  {
     
@@ -37,6 +35,7 @@ public class RoundController implements ActionListener  {
     public int rand;
     public int point;
 
+    // Contructor
     public RoundController(ViewRound view, QuestionModel model,int categoryVal) {
         this.view = view;
         this.model = model;
@@ -49,6 +48,7 @@ public class RoundController implements ActionListener  {
         this.view.jRadioButton4.addActionListener(this);
     }
     
+    // Start View
     public void start() throws SQLException, ClassNotFoundException {
         this.view.setVisible(true);
         this.view.getContentPane().setBackground(Color.WHITE);
@@ -58,16 +58,19 @@ public class RoundController implements ActionListener  {
         setInformation(dataQuestion,playerSelect,categoryVal);
     }
     
+    // Method for obtain Questions of BD
     public ArrayList<QuestionE> getInformation() throws SQLException, ClassNotFoundException{
         data = QuestionModel.getQuestions();
         return data;
     }
     
+    //Method for obtain Players of BD
     public ArrayList<PlayerE> getPlayer() throws SQLException, ClassNotFoundException{
         player = PlayerModel.getUser();
         return player;
     }
     
+    // Method for setting View Items
     public void setInformation(ArrayList<QuestionE> dataA, ArrayList<PlayerE> dataB, int round){
         switch (round){
             case 1:{
@@ -123,15 +126,16 @@ public class RoundController implements ActionListener  {
         this.view.PointsPane.setText(String.valueOf(playerView.getPoint()));
     }
 
+    //Action for Buttons
     @Override
     public void actionPerformed(ActionEvent e) {
-                switch (e.getActionCommand()) {
+        int sizePlayer = playerSelect.size();
+        PlayerE playerC = playerSelect.get(sizePlayer-1);
+        int idplayers = playerC.getId();
+        switch (e.getActionCommand()) {
             case "Continuar":
                 String answer = value.getAnswer();
                 int prize = value.getPrize();
-                int sizePlayer = playerSelect.size();
-                PlayerE playerC = playerSelect.get(sizePlayer-1);
-                int idplayers = playerC.getId();
                 switch (categoryVal){
                     case 1:{
                         point = 10;
@@ -220,6 +224,11 @@ public class RoundController implements ActionListener  {
                         }
                         this.view.setVisible(false);
                     } else{
+                        try {
+                            PlayerModel.UpdatePlayer(0, categoryVal,idplayers);
+                        } catch (SQLException ex) {
+                            Logger.getLogger(RoundController.class.getName()).log(Level.SEVERE, null, ex);
+                        }
                         ViewError view = new ViewError();
                         PlayerModel model = new PlayerModel();
                         try {
@@ -250,6 +259,33 @@ public class RoundController implements ActionListener  {
                 }
                  break;
             case "Retirarse":
+                switch (categoryVal){
+                    case 1:{
+                        point = 0;
+                        break;
+                    }
+                    case 2:{
+                        point = 10;
+                        break;
+                    }
+                    case 3:{
+                        point = 30;
+                        break;
+                    }
+                    case 4:{
+                        point = 60;
+                        break;
+                    }
+                    case 5:{
+                        point = 100;
+                        break;
+                    }
+                }
+                try {
+                    PlayerModel.UpdatePlayer(point, categoryVal,idplayers);
+                } catch (SQLException ex) {
+                    Logger.getLogger(RoundController.class.getName()).log(Level.SEVERE, null, ex);
+                }
                 ViewPlayerList view = new ViewPlayerList();
                 PlayerModel model = new PlayerModel();
                 {
