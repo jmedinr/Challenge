@@ -1,7 +1,5 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Is the principal controller of program, here run the questions and are displayed in the view
  */
 package controller;
 
@@ -18,7 +16,7 @@ import view.*;
 
 /**
  *
- * @author juanm
+ * @author jmedinr
  */
 public class RoundController implements ActionListener  {
     
@@ -30,10 +28,14 @@ public class RoundController implements ActionListener  {
     public static ArrayList<PlayerE> playerSelect = new ArrayList<PlayerE>();
     public static ArrayList<PlayerE> playerSelectC = new ArrayList<PlayerE>();
     public static ArrayList<QuestionE> data = new ArrayList<QuestionE>();
+    public QuestionE value;
     public static ArrayList<QuestionE> dataQuestion = new ArrayList<QuestionE>();
     public static ArrayList<QuestionE> dataQuestionC = new ArrayList<QuestionE>();
     public static ArrayList<QuestionE> roundSelect = new ArrayList<QuestionE>();
+    public int rand;
+    public int point;
 
+    // Contructor
     public RoundController(ViewRound view, QuestionModel model,int categoryVal) {
         this.view = view;
         this.model = model;
@@ -46,36 +48,72 @@ public class RoundController implements ActionListener  {
         this.view.jRadioButton4.addActionListener(this);
     }
     
+    // Start View
     public void start() throws SQLException, ClassNotFoundException {
         this.view.setVisible(true);
         this.view.getContentPane().setBackground(Color.WHITE);
         this.view.setLocationRelativeTo(null);
         dataQuestion = getInformation();
         playerSelect = getPlayer();
-        setInformation(dataQuestion,playerSelect,1);
+        setInformation(dataQuestion,playerSelect,categoryVal);
     }
     
+    // Method for obtain Questions of BD
     public ArrayList<QuestionE> getInformation() throws SQLException, ClassNotFoundException{
         data = QuestionModel.getQuestions();
         return data;
     }
     
+    //Method for obtain Players of BD
     public ArrayList<PlayerE> getPlayer() throws SQLException, ClassNotFoundException{
         player = PlayerModel.getUser();
         return player;
     }
     
+    // Method for setting View Items
     public void setInformation(ArrayList<QuestionE> dataA, ArrayList<PlayerE> dataB, int round){
-        int max = 5;
-        int min = 1;
-        int range = max - min + 1;
-        for(QuestionE  i : dataA) {
-            if (i.getRound() == round) {
-                roundSelect.add(i);
-                }
+        switch (round){
+            case 1:{
+                int max = 5;
+                int min = 1;
+                int range = max - min + 1;
+                rand = (int)(Math.random() * range) + min;
+                value = dataA.get(rand-1);
+                break;
             }
-        int rand = (int)(Math.random() * range) + min;
-        QuestionE value = roundSelect.get(rand-1);
+            case 2:{
+                int max = 10;
+                int min = 6;
+                int range = max - min + 1;
+                rand = (int)(Math.random() * range) + min;
+                value = dataA.get(rand-1);
+                break;
+            }
+            case 3:{
+                int max = 15;
+                int min = 11;
+                int range = max - min + 1;
+                rand = (int)(Math.random() * range) + min;
+                value = dataA.get(rand-1);
+                break;
+            }
+            case 4:{
+                int max = 20;
+                int min = 16;
+                int range = max - min + 1;
+                rand = (int)(Math.random() * range) + min;
+                value = dataA.get(rand-1);
+                break;
+            }
+            case 5:{
+                int max = 25;
+                int min = 21;
+                int range = max - min + 1;
+                rand = (int)(Math.random() * range) + min;
+                value = dataA.get(rand-1);
+                break;
+            }
+        }
         this.view.RoundPane.setText(String.valueOf(value.getRound()));
         this.view.PrizePane.setText(String.valueOf(value.getPrize()));
         this.view.QuestionPane.setText(String.valueOf(value.getQuestion()));
@@ -87,27 +125,46 @@ public class RoundController implements ActionListener  {
         PlayerE playerView = dataB.get(sizePlayer-1);
         this.view.PointsPane.setText(String.valueOf(playerView.getPoint()));
     }
-    
+
+    //Action for Buttons
     @Override
     public void actionPerformed(ActionEvent e) {
+        int sizePlayer = playerSelect.size();
+        PlayerE playerC = playerSelect.get(sizePlayer-1);
+        int idplayers = playerC.getId();
         switch (e.getActionCommand()) {
             case "Continuar":
-                String questionC = this.view.QuestionPane.getText();
-            {
-                try {
-                    dataQuestionC = getInformation();
-                    playerSelectC = getPlayer();
-                } catch (SQLException ex) {
-                    Logger.getLogger(RoundController.class.getName()).log(Level.SEVERE, null, ex);
-                } catch (ClassNotFoundException ex) {
-                    Logger.getLogger(RoundController.class.getName()).log(Level.SEVERE, null, ex);
+                String answer = value.getAnswer();
+                int prize = value.getPrize();
+                switch (categoryVal){
+                    case 1:{
+                        point = 10;
+                        break;
+                    }
+                    case 2:{
+                        point = 30;
+                        break;
+                    }
+                    case 3:{
+                        point = 60;
+                        break;
+                    }
+                    case 4:{
+                        point = 100;
+                        break;
+                    }
+                    case 5:{
+                        point = 150;
+                        break;
+                    }
                 }
-            }
-                int index = dataQuestionC.indexOf(questionC);
-                QuestionE dataEvaluated = dataQuestionC.get(index);
-                String answer = dataEvaluated.getAnswer();
                 if (categoryVal<5){
-                    if(this.view.jRadioButton1.isSelected() && answer == "a"){
+                    if(this.view.jRadioButton1.isSelected() && "a".equals(answer)){
+                        try {
+                            PlayerModel.UpdatePlayer(point, categoryVal+1,idplayers);
+                        } catch (SQLException ex) {
+                            Logger.getLogger(RoundController.class.getName()).log(Level.SEVERE, null, ex);
+                        }
                         ViewCongratulations view = new ViewCongratulations();
                         PlayerModel model = new PlayerModel();
                         try {
@@ -117,7 +174,13 @@ public class RoundController implements ActionListener  {
                         } catch (ClassNotFoundException ex) {
                             Logger.getLogger(RoundController.class.getName()).log(Level.SEVERE, null, ex);
                         }
-                    } else if (this.view.jRadioButton2.isSelected() && answer == "b"){
+                        this.view.setVisible(false);
+                    } else if (this.view.jRadioButton2.isSelected() && "b".equals(answer)){
+                        try {
+                            PlayerModel.UpdatePlayer(point, categoryVal+1,idplayers);
+                        } catch (SQLException ex) {
+                            Logger.getLogger(RoundController.class.getName()).log(Level.SEVERE, null, ex);
+                        }
                         ViewCongratulations view = new ViewCongratulations();
                         PlayerModel model = new PlayerModel();
                         try {
@@ -127,7 +190,13 @@ public class RoundController implements ActionListener  {
                         } catch (ClassNotFoundException ex) {
                             Logger.getLogger(RoundController.class.getName()).log(Level.SEVERE, null, ex);
                         }
-                    } else if (this.view.jRadioButton3.isSelected() && answer == "c"){
+                        this.view.setVisible(false);
+                    } else if (this.view.jRadioButton3.isSelected() && "c".equals(answer)){
+                        try {
+                            PlayerModel.UpdatePlayer(point, categoryVal+1,idplayers);
+                        } catch (SQLException ex) {
+                            Logger.getLogger(RoundController.class.getName()).log(Level.SEVERE, null, ex);
+                        }
                         ViewCongratulations view = new ViewCongratulations();
                         PlayerModel model = new PlayerModel();
                         try {
@@ -137,7 +206,13 @@ public class RoundController implements ActionListener  {
                         } catch (ClassNotFoundException ex) {
                             Logger.getLogger(RoundController.class.getName()).log(Level.SEVERE, null, ex);
                         }
-                    } else if (this.view.jRadioButton4.isSelected() && answer == "d"){
+                        this.view.setVisible(false);
+                    } else if (this.view.jRadioButton4.isSelected() && "d".equals(answer)){
+                        try {
+                            PlayerModel.UpdatePlayer(point, categoryVal+1,idplayers);
+                        } catch (SQLException ex) {
+                            Logger.getLogger(RoundController.class.getName()).log(Level.SEVERE, null, ex);
+                        }
                         ViewCongratulations view = new ViewCongratulations();
                         PlayerModel model = new PlayerModel();
                         try {
@@ -147,36 +222,83 @@ public class RoundController implements ActionListener  {
                         } catch (ClassNotFoundException ex) {
                             Logger.getLogger(RoundController.class.getName()).log(Level.SEVERE, null, ex);
                         }
+                        this.view.setVisible(false);
                     } else{
-
+                        try {
+                            PlayerModel.UpdatePlayer(0, categoryVal,idplayers);
+                        } catch (SQLException ex) {
+                            Logger.getLogger(RoundController.class.getName()).log(Level.SEVERE, null, ex);
+                        }
+                        ViewError view = new ViewError();
+                        PlayerModel model = new PlayerModel();
+                        try {
+                            new ErrorController(view,model,categoryVal).start();
+                        } catch (SQLException ex) {
+                            Logger.getLogger(RoundController.class.getName()).log(Level.SEVERE, null, ex);
+                        } catch (ClassNotFoundException ex) {
+                            Logger.getLogger(RoundController.class.getName()).log(Level.SEVERE, null, ex);
+                        }
+                        this.view.setVisible(false);
                     }
                 }else if (categoryVal==5){
-                   
+                    try {
+                        PlayerModel.UpdatePlayer(point, categoryVal,idplayers);
+                    } catch (SQLException ex) {
+                            Logger.getLogger(RoundController.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                    ViewWinner view = new ViewWinner();
+                    PlayerModel model = new PlayerModel();
+                    try {
+                        new WinnerController(view,model,categoryVal).start();
+                    } catch (SQLException ex) {
+                        Logger.getLogger(RoundController.class.getName()).log(Level.SEVERE, null, ex);
+                    } catch (ClassNotFoundException ex) {
+                        Logger.getLogger(RoundController.class.getName()).log(Level.SEVERE, null, ex);
+                    }
                     this.view.setVisible(false);
                 }
-
-            
-                String name = this.view.nombreField.getText();
-                int points = 0;
-                int category = 1;
-                {
-                    try {
-                        PlayerModel.registerPlayer(name,points,category);
-                    } catch (SQLException ex) {
-                        Logger.getLogger(Players.class.getName()).log(Level.SEVERE, null, ex);
+                 break;
+            case "Retirarse":
+                switch (categoryVal){
+                    case 1:{
+                        point = 0;
+                        break;
+                    }
+                    case 2:{
+                        point = 10;
+                        break;
+                    }
+                    case 3:{
+                        point = 30;
+                        break;
+                    }
+                    case 4:{
+                        point = 60;
+                        break;
+                    }
+                    case 5:{
+                        point = 100;
+                        break;
                     }
                 }
-                JOptionPane.showMessageDialog(view, "Inicio del Cuestionario");
-                this.view.nombreField.setText("");
-                ViewRound view = new ViewRound();
-                QuestionModel model = new QuestionModel();
-                new RoundController(view,model).start();
-                this.view.setVisible(false);
-                break;
-            case "Salir":
+                try {
+                    PlayerModel.UpdatePlayer(point, categoryVal,idplayers);
+                } catch (SQLException ex) {
+                    Logger.getLogger(RoundController.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                ViewPlayerList view = new ViewPlayerList();
+                PlayerModel model = new PlayerModel();
+                {
+                    try {
+                        new ViewPlayerListController(view,model).start();
+                    } catch (SQLException ex) {
+                        Logger.getLogger(RoundController.class.getName()).log(Level.SEVERE, null, ex);
+                    } catch (ClassNotFoundException ex) {
+                        Logger.getLogger(RoundController.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                }
                 this.view.setVisible(false);
                 break;
         }
     }
-    
 }

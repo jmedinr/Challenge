@@ -7,7 +7,7 @@ package view;
 
 /**
  *
- * @author juanm
+ * @author jmedinr
  */
 public class ViewError extends javax.swing.JFrame {
 
@@ -31,8 +31,8 @@ public class ViewError extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTextPane1 = new javax.swing.JTextPane();
-        jButton1 = new javax.swing.JButton();
+        PointPane = new javax.swing.JTextPane();
+        ExitButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -43,10 +43,11 @@ public class ViewError extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         jLabel2.setText("Puntos Acumulados");
 
-        jScrollPane1.setViewportView(jTextPane1);
+        PointPane.setEditable(false);
+        jScrollPane1.setViewportView(PointPane);
 
-        jButton1.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
-        jButton1.setText("Salir");
+        ExitButton.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
+        ExitButton.setText("Salir");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -60,13 +61,10 @@ public class ViewError extends javax.swing.JFrame {
                 .addGap(57, 57, 57))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(105, 105, 105))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(jButton1)
-                        .addGap(96, 96, 96))))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(ExitButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1))
+                .addGap(96, 96, 96))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -78,7 +76,7 @@ public class ViewError extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jButton1)
+                .addComponent(ExitButton)
                 .addContainerGap(29, Short.MAX_VALUE))
         );
 
@@ -101,11 +99,11 @@ public class ViewError extends javax.swing.JFrame {
      */
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    public javax.swing.JButton jButton1;
+    public javax.swing.JButton ExitButton;
+    public javax.swing.JTextPane PointPane;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    public javax.swing.JTextPane jTextPane1;
     // End of variables declaration//GEN-END:variables
 }

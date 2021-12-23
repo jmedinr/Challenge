@@ -1,6 +1,5 @@
 /*
-/*
- * This is the Controller by when it was answered correctly
+* Controller when you are the winner.
  */
 package controller;
 
@@ -13,6 +12,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import model.*;
 import view.*;
 
@@ -20,24 +20,22 @@ import view.*;
  *
  * @author jmedinr
  */
-public class CongratulationController implements ActionListener {
+public class WinnerController implements ActionListener {
     
-    ViewCongratulations view;
+    ViewWinner view;
     PlayerModel model;
     int categoryVal;
     
     public static ArrayList<PlayerE> player = new ArrayList<PlayerE>();
     public static ArrayList<PlayerE> playerSelect = new ArrayList<PlayerE>();
     
-    //Constructor
-    public CongratulationController(ViewCongratulations view, PlayerModel model, int categoryVal) {
+    public WinnerController(ViewWinner view, PlayerModel model, int categoryVal) {
         this.view = view;
         this.model = model;
         this.categoryVal = categoryVal;
-        this.view.nextButton.addActionListener(this);
+        this.view.FinalizarButton.addActionListener(this);
     }
     
-    //// Start View
     public void start() throws SQLException, ClassNotFoundException {
         this.view.setVisible(true);
         this.view.getContentPane().setBackground(Color.WHITE);
@@ -46,35 +44,32 @@ public class CongratulationController implements ActionListener {
         setInformation(playerSelect);
     }
     
-    ////Method for obtain Players of BD
     public ArrayList<PlayerE> getPlayer() throws SQLException, ClassNotFoundException{
         player = PlayerModel.getUser();
         return player;
     }
     
-    // Method for setting View Items
     public void setInformation(ArrayList<PlayerE> data){
         int sizePlayer = data.size();
         PlayerE playerC = data.get(sizePlayer-1);
         view.PointPane.setText(String.valueOf(playerC.getPoint()));
     }
-    
-    //Action for Buttons
+
     @Override
     public void actionPerformed(ActionEvent e) {
         switch (e.getActionCommand()) {
-            case "Siguiente Ronda":
-                ViewRound view = new ViewRound();
-                QuestionModel model = new QuestionModel();
-            {
-                try {
-                    new RoundController(view,model,categoryVal+1).start();
-                } catch (SQLException ex) {
-                    Logger.getLogger(Players.class.getName()).log(Level.SEVERE, null, ex);
-                } catch (ClassNotFoundException ex) {
-                    Logger.getLogger(Players.class.getName()).log(Level.SEVERE, null, ex);
+            case "Finalizar Cuestionario":
+                ViewPlayerList view = new ViewPlayerList();
+                PlayerModel model = new PlayerModel();
+                {
+                    try {
+                        new ViewPlayerListController(view,model).start();
+                    } catch (SQLException ex) {
+                        Logger.getLogger(RoundController.class.getName()).log(Level.SEVERE, null, ex);
+                    } catch (ClassNotFoundException ex) {
+                        Logger.getLogger(RoundController.class.getName()).log(Level.SEVERE, null, ex);
+                    }
                 }
-            }
                 this.view.setVisible(false);
                 break;
         }

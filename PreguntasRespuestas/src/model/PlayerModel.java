@@ -1,7 +1,5 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+* Rest of players
  */
 package model;
 
@@ -12,10 +10,11 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 /**
  *
- * @author juanm
+ * @author jmedinr
  */
 public class PlayerModel {
     
+    //POST
     public static void registerPlayer(String name, int points, int category) throws SQLException{
         try (Connection con = Connect.getConnection()) {
             String query = "INSERT INTO bdpreguntas.players (playername, points, category) VALUES (?,?,?);";
@@ -28,7 +27,8 @@ public class PlayerModel {
         }
     }
     
-       public static ArrayList<PlayerE> getUser() throws SQLException, ClassNotFoundException {
+    //GET
+    public static ArrayList<PlayerE> getUser() throws SQLException, ClassNotFoundException {
            ArrayList<PlayerE> data;
         try (Connection con = Connect.getConnection()) {
             String query = "SELECT * FROM bdpreguntas.players";
@@ -43,6 +43,7 @@ public class PlayerModel {
         return data;
     }
     
+    //PUT
     public static void UpdatePlayer(int points, int category,int idplayers) throws SQLException{
         try (Connection con = Connect.getConnection()) {
             String query = "UPDATE bdpreguntas.players SET points=?, category=? WHERE idplayers=?";

@@ -7,7 +7,7 @@ package view;
 
 /**
  *
- * @author juanm
+ * @author jmedinr
  */
 public class ViewCongratulations extends javax.swing.JFrame {
 
@@ -31,8 +31,8 @@ public class ViewCongratulations extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTextPane1 = new javax.swing.JTextPane();
-        jButton1 = new javax.swing.JButton();
+        PointPane = new javax.swing.JTextPane();
+        nextButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -43,13 +43,14 @@ public class ViewCongratulations extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         jLabel2.setText("Puntos Acumulados");
 
-        jScrollPane1.setViewportView(jTextPane1);
+        PointPane.setEditable(false);
+        jScrollPane1.setViewportView(PointPane);
 
-        jButton1.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
-        jButton1.setText("Siguiente Ronda");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        nextButton.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
+        nextButton.setText("Siguiente Ronda");
+        nextButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                nextButtonActionPerformed(evt);
             }
         });
 
@@ -65,7 +66,7 @@ public class ViewCongratulations extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(79, 79, 79)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jButton1)
+                            .addComponent(nextButton)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel2)
                                 .addGap(8, 8, 8)))))
@@ -85,7 +86,7 @@ public class ViewCongratulations extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jButton1)
+                .addComponent(nextButton)
                 .addContainerGap(41, Short.MAX_VALUE))
         );
 
@@ -103,19 +104,19 @@ public class ViewCongratulations extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void nextButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nextButtonActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_nextButtonActionPerformed
 
     /**
      * @param args the command line arguments
      */
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    public javax.swing.JButton jButton1;
+    public javax.swing.JTextPane PointPane;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    public javax.swing.JTextPane jTextPane1;
+    public javax.swing.JButton nextButton;
     // End of variables declaration//GEN-END:variables
 }
