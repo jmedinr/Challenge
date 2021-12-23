@@ -9,7 +9,7 @@
 - JDK and JRE: https://docs.oracle.com/javase/8/docs/technotes/guides/install/install_overview.html#CJAGAACB
 - Connector/J 8.0.27: https://dev.mysql.com/downloads/connector/j/
 - Mysql: https://dev.mysql.com/downloads/installer/
-- JAR File: https://jar-download.com/download-handling.php
+- JAR File: https://es.osdn.net/projects/sfnet_id2d/downloads/jdbc%20drivers/mysql-connector-java-5.1.15-bin.jar/
 
 ### Running
 - You have to clone this repository: https://github.com/jmedinr/Challenge.git
