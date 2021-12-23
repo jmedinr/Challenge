@@ -5,8 +5,6 @@
  */
 package controller;
 
-import static controller.RoundController.dataQuestion;
-import static controller.RoundController.playerSelect;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -21,22 +19,22 @@ import view.*;
  *
  * @author juanm
  */
-public class CongratulationController implements ActionListener {
+public class ErrorController implements ActionListener{
     
-    ViewCongratulations view;
+    ViewError view;
     PlayerModel model;
     int categoryVal;
     
     public static ArrayList<PlayerE> player = new ArrayList<PlayerE>();
     public static ArrayList<PlayerE> playerSelect = new ArrayList<PlayerE>();
 
-    public CongratulationController(ViewCongratulations view, PlayerModel model, int categoryVal) {
+    public ErrorController(ViewError view, PlayerModel model, int categoryVal) {
         this.view = view;
         this.model = model;
         this.categoryVal = categoryVal;
-        this.view.nextButton.addActionListener(this);
+        this.view.ExitButton.addActionListener(this);
     }
-    
+  
     public void start() throws SQLException, ClassNotFoundException {
         this.view.setVisible(true);
         this.view.getContentPane().setBackground(Color.WHITE);
@@ -59,18 +57,18 @@ public class CongratulationController implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         switch (e.getActionCommand()) {
-            case "Siguiente Ronda":
-                ViewRound view = new ViewRound();
-                QuestionModel model = new QuestionModel();
-            {
-                try {
-                    new RoundController(view,model,categoryVal+1).start();
-                } catch (SQLException ex) {
-                    Logger.getLogger(Players.class.getName()).log(Level.SEVERE, null, ex);
-                } catch (ClassNotFoundException ex) {
-                    Logger.getLogger(Players.class.getName()).log(Level.SEVERE, null, ex);
+            case "Salir":
+                ViewPlayerList view = new ViewPlayerList();
+                PlayerModel model = new PlayerModel();
+                {
+                    try {
+                        new ViewPlayerListController(view,model).start();
+                    } catch (SQLException ex) {
+                        Logger.getLogger(RoundController.class.getName()).log(Level.SEVERE, null, ex);
+                    } catch (ClassNotFoundException ex) {
+                        Logger.getLogger(RoundController.class.getName()).log(Level.SEVERE, null, ex);
+                    }
                 }
-            }
                 this.view.setVisible(false);
                 break;
         }
