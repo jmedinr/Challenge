@@ -223,7 +223,7 @@ public class RoundController implements ActionListener  {
                             Logger.getLogger(RoundController.class.getName()).log(Level.SEVERE, null, ex);
                         }
                         this.view.setVisible(false);
-                    } else{
+                        }else{
                         try {
                             PlayerModel.UpdatePlayer(0, categoryVal,idplayers);
                         } catch (SQLException ex) {
@@ -240,7 +240,7 @@ public class RoundController implements ActionListener  {
                         }
                         this.view.setVisible(false);
                     }
-                }else if (categoryVal==5){
+                    } else if (categoryVal==5){
                     try {
                         PlayerModel.UpdatePlayer(point, categoryVal,idplayers);
                     } catch (SQLException ex) {
