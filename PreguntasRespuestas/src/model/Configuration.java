@@ -8,9 +8,9 @@ package model;
  * @author jmedinr
  */
 public class Configuration {
-    public static final String SERVER = "181.142.34.100";
+    public static final String SERVER = {my_ip};
     public static final int PORT = 3306;
-    public static final String BD = "bdpreguntas?characterEncoding=latin1";
-    public static final String USER_NAME = "jmedinr";
-    public static final String PASSWORD = "1J23u45a67n89";
+    public static final String BD = {my_url};
+    public static final String USER_NAME = {my_username};
+    public static final String PASSWORD = {my_password};
 }
